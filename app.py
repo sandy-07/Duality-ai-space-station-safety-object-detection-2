@@ -1,13 +1,24 @@
 from ultralytics import YOLO
 import gradio as gr
+from pyngrok import ngrok
 
-# Load the best model
-model = YOLO(yolo_best.pt)  # make sure this file is in the same folder
+# Set your ngrok authtoken
+ngrok.set_auth_token("330EwoQIWcrlN3b2mBzodyhsgGR_7qXQxGbaEHWdCxxkHvLFL")  # <-- replace with your token
 
-def predict_image(image)
+# Load the trained YOLO model
+model = YOLO("yolo_best.pt")
+
+# Prediction function
+def predict_image(image):
     results = model.predict(image)
-    return results[0].plot()  # returns image with predictions
+    return results[0].plot()
 
-# Gradio interface
-demo = gr.Interface(fn=predict_image, inputs=image, outputs=image)
-demo.launch()
+# Create Gradio interface
+demo = gr.Interface(fn=predict_image, inputs="image", outputs="image")
+
+# Open a public URL using ngrok
+public_url = ngrok.connect(7860)
+print("Public URL:", public_url)
+
+# Launch Gradio app
+demo.launch(server_name="0.0.0.0", server_port=7860)
