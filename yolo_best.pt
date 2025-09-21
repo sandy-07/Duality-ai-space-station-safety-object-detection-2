@@ -1,1 +1,13 @@
+Models
+
+ yolo_best.pt
+- This is the **best-performing YOLOv8 model** after 20 epochs of training.
+- Used for the hackathon demo.
+- Provides the most accurate predictions on our test images.
+- File size: ~XX MB (replace with actual size)
+
+ yolov8s.pt
+- Base trained YOLOv8 model.
+- Included for reference.
+
 
